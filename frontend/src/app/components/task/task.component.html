@@ -1,0 +1,28 @@
+<ul class="task-list">
+  <li *ngFor="let task of tasks">
+    <strong>{{ task.title }}</strong> : {{ task.description }}
+    <button (click)="editTask(task)">Modifier</button>
+    <button (click)="deleteTask(task.id)">Supprimer</button>
+  </li>
+</ul>
+
+<!-- Formulaire pour ajouter ou modifier une tâche -->
+<div class="task-form">
+  <h2>{{ newTask.id ? 'Modifier une tâche' : 'Ajouter une tâche' }}</h2>
+  <form (ngSubmit)="saveTask()">
+    <input
+      type="text"
+      placeholder="Titre"
+      [(ngModel)]="newTask.title"
+      name="title"
+      required
+    />
+    <input
+      type="text"
+      placeholder="Description"
+      [(ngModel)]="newTask.description"
+      name="description"
+    />
+    <button type="submit">{{ newTask.id ? 'Sauvegarder' : 'Ajouter' }}</button>
+  </form>
+</div>

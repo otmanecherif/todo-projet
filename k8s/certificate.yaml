@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: todo-frontend-tls
+  namespace: default
+spec:
+  secretName: todo-frontend-tls-secret
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: http://localhost/todo-frontend/
+  dnsNames:
+    - http://localhost/todo-frontend/
